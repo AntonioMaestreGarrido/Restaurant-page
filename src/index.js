@@ -6,6 +6,7 @@ setListeners()
 
 
 
+
 function setListeners() {
     let l = document.querySelectorAll(".tab")
 
@@ -18,12 +19,18 @@ function setListeners() {
 
 
 }
-
-
-function makeHome() {
+function anexaPage(f) {
     if (document.querySelector("#cuerpo")) { document.querySelector("#content").removeChild(document.querySelector("#cuerpo")) }
     var cuerpo = document.createElement("div")
     cuerpo.setAttribute("id", "cuerpo");
+
+    document.querySelector("#content").appendChild(cuerpo);
+    document.querySelector("#cuerpo").appendChild(f);
+}
+
+
+function makeHome() {
+
 
     var fragment = new DocumentFragment();
     const div1 = document.createElement("div");
@@ -40,14 +47,12 @@ function makeHome() {
 
 
     document.querySelector("#content").appendChild(cuerpo);
-    document.querySelector("#cuerpo").appendChild(fragment);
+    anexaPage(fragment);
+
 }
 
 
 function makeMenu() {
-    if (document.querySelector("#cuerpo")) { document.querySelector("#content").removeChild(document.querySelector("#cuerpo")) }
-    var cuerpo = document.createElement("div")
-    cuerpo.setAttribute("id", "cuerpo");
 
     var fragment = new DocumentFragment();
     const div1 = document.createElement("div");
@@ -61,22 +66,15 @@ function makeMenu() {
     p.textContent = "Desde este QR puedes descargar nuestra carta completa"
     div1.appendChild(p);
 
-    let carta=document.createElement("img");
-    carta.setAttribute("src","../src/img/BAR-MORILES-CODIGO-QR.jpg");
+    let carta = document.createElement("img");
+    carta.setAttribute("src", "../src/img/BAR-MORILES-CODIGO-QR.jpg");
     div1.appendChild(carta);
 
-
-    
-
-
-    document.querySelector("#content").appendChild(cuerpo);
-    document.querySelector("#cuerpo").appendChild(fragment);
+    anexaPage(fragment)
 }
 
 function makeContact() {
-    if (document.querySelector("#cuerpo")) { document.querySelector("#content").removeChild(document.querySelector("#cuerpo")) }
-    var cuerpo = document.createElement("div")
-    cuerpo.setAttribute("id", "cuerpo");
+    
 
     var fragment = new DocumentFragment();
     const div1 = document.createElement("div");
@@ -90,13 +88,6 @@ function makeContact() {
     p.textContent = "Podras visitarnos en Cordoba ,calle Bender the ofender n 45"
     div1.appendChild(p);
 
-    
-
-
-    
-
-
-    document.querySelector("#content").appendChild(cuerpo);
-    document.querySelector("#cuerpo").appendChild(fragment);
+    anexaPage(fragment)
 
 }
